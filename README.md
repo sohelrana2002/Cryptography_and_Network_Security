@@ -67,6 +67,7 @@ Cryptography_and_Network_Security/
 - Playfair Cipher
 - Hill Cipher
 - Transposition Cipher
+- Lehmann_Algorithm
 
 ### Modern Cryptography
 
