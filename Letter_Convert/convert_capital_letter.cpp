@@ -15,6 +15,6 @@ int main(){
     }
 
     for (int i = 0; i < 26; i++){
-       cout << capital_letter[i] << " ";
+       cout << capital_letter[i] << ", ";
     }
 }
