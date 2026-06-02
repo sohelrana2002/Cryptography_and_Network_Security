@@ -39,52 +39,23 @@ Depending on the implementation files included in the repository:
 
 ---
 
-## 📂 Project Structure
-
-```bash
-Cryptography_and_Network_Security/
-│
-├── Classical_Ciphers/
-├── Modern_Cryptography/
-├── Network_Security/
-├── Encryption_Decryption/
-├── Algorithms/
-├── Examples/
-└── README.md
-```
-
-> Folder names may vary depending on the current repository structure.
-
----
-
 ## 🔐 Topics Covered
 
 ### Classical Cryptography
 
 - Caesar Cipher
-- Vigenère Cipher
-- Rail Fence Cipher
-- Playfair Cipher
-- Hill Cipher
+- Fixed Substution Table
+- Letter Convert
+- Random Substitution Table
+- Seive Algorithm
 - Transposition Cipher
 - Lehmann_Algorithm
 
 ### Modern Cryptography
 
 - DES
-- AES
 - RSA
 - Diffie-Hellman Key Exchange
-- Hash Functions
-
-### Network Security
-
-- Authentication
-- Digital Signatures
-- Firewalls
-- Secure Communication
-- Network Threats
-- Security Protocols
 
 ---
 
