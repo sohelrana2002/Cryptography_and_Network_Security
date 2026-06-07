@@ -1,5 +1,6 @@
 import random
 from math import gcd, isqrt
+import sys
 
 def is_prime(n):
     if n < 2:
@@ -9,12 +10,7 @@ def is_prime(n):
             return False
     return True
 
-def generate_keypair():
-    primes = [p for p in range(50, 200) if is_prime(p)]
-    p = random.choice(primes)
-    q = random.choice(primes)
-    while p == q:
-        q = random.choice(primes)
+def generate_keypair(p, q):
     n = p * q
     phi = (p - 1) * (q - 1)
     e = 65537
@@ -37,9 +33,25 @@ def string_to_ascii(text):
 def ascii_to_string(ascii_list):
     return ''.join(chr(i) for i in ascii_list)
 
-public_key, private_key, p, q, n, phi = generate_keypair()
+prime_p = int(input("Enter large prime p: "))
+prime_q = int(input("Enter large prime q: "))
 
-plain_text = "Hello"
+if is_prime(prime_p) != True:
+    print("p is not prime")
+    sys.exit()
+
+if is_prime(prime_q) != True:
+    print("q is not prime")
+    sys.exit()
+
+if prime_p == prime_q:
+    print("p and q must be different prime")
+    sys.exit()
+
+public_key, private_key, p, q, n, phi = generate_keypair(prime_p, prime_q)
+
+plain_text = input("Enter a message: ")
+
 ascii_vals = string_to_ascii(plain_text)
 cipher_text = [rsa_encrypt(val, public_key) for val in ascii_vals]
 decrypt_method = [rsa_decrypt(val, private_key) for val in cipher_text]
