@@ -21,7 +21,7 @@ def generate_keypair():
     while gcd(e, phi) != 1:
         e = random.randint(3, phi - 1)
     d = pow(e, -1, phi)
-    return (e, n), (d, n), p, q
+    return (e, n), (d, n), p, q, n, phi
 
 def rsa_encrypt(message, public_key):
     e, n = public_key
@@ -37,13 +37,23 @@ def string_to_ascii(text):
 def ascii_to_string(ascii_list):
     return ''.join(chr(i) for i in ascii_list)
 
-public_key, private_key, p, q = generate_keypair()
-e, n = public_key
-d, _ = private_key
+public_key, private_key, p, q, n, phi = generate_keypair()
+
+plain_text = "Hello"
+ascii_vals = string_to_ascii(plain_text)
+cipher_text = [rsa_encrypt(val, public_key) for val in ascii_vals]
+decrypt_method = [rsa_decrypt(val, private_key) for val in cipher_text]
+decipher_text = ascii_to_string(decrypt_method)
 
 print("RSA Key Generation:")
 print(f"Prime p: {p}")
 print(f"Prime q: {q}")
 print(f"n = {n}")
-print(f"Public key: ({e}, {n})")
-print(f"Private key: ({d}, {n})")
+print(f"fee of n = {phi}")
+print(f"Public key: {public_key}")
+print(f"Private key: {private_key}")
+print(f"Plain Text: {plain_text},")
+print(f"Cipher Text: {cipher_text}")
+print(f"Decript Method: {decrypt_method}")
+print(f"Decipher Text: {decipher_text}")
+print(f"Success: {plain_text == decipher_text}")
